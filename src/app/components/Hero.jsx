@@ -55,7 +55,7 @@ export default function Hero() {
             marginBottom: "1.75rem",
           }}
         >
-          CS Student · AI, Data Science & Machine Learning
+          AI, Data Science & Machine Learning
         </p>
 
         <p
@@ -67,10 +67,10 @@ export default function Hero() {
             marginBottom: "3rem",
           }}
         >
-          I'm interested in machine learning, quantum machine learning, and the
-          mathematics behind intelligent systems. I enjoy exploring research at
-          the frontier of AI — from classical models to quantum-enhanced
-          algorithms — and building software that reflects that curiosity.
+          CS student at Monterrey's Institute of Technology researching hybrid
+          classical-quantum architectures. I build full-stack systems, train
+          ML models on real data, and explore the boundary where computation
+          and physics meet.
         </p>
 
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
@@ -80,7 +80,7 @@ export default function Hero() {
           <a href="#contact" className="btn-secondary">
             Get in touch
           </a>
-          <a href="/charbel_cv.pdf" download className="btn-secondary">
+          <a href="/CV_CharbelChz.pdf" download className="btn-secondary">
             Download CV
           </a>
         </div>

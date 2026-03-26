@@ -135,3 +135,10 @@ h1, h2, h3, h4, h5, h6 {
 .email-link:hover {
   color: #6b7c4b;
 }
+
+.hero-project-row span:first-child {
+  transition: color 0.2s ease;
+}
+.hero-project-row:hover span {
+  color: #6b7c4b;
+}
