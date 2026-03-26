@@ -19,6 +19,9 @@ const playfair = Playfair_Display({
 export const metadata = {
   title: "Charbel Chávez Portfolio",
   description: "CS student focused on research in quantum computing, machine learning, and data science.",
+  icons: {
+    icon: "/C.svg",
+  },
 };
 
 export default function RootLayout({ children }) {
