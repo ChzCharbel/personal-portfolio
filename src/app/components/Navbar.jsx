@@ -56,7 +56,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden sm:flex" style={{ gap: "2.5rem", display: "flex" }}>
+        <nav className="hidden sm:flex" style={{ gap: "2.5rem" }}>
           {links.map(({ label, href }) => (
             <a key={href} href={href} className="nav-link">
               {label}
