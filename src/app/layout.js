@@ -17,8 +17,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  title: "Charbel Chávez — Portfolio",
-  description: "CS student focused on AI, data science, and quantitative computing.",
+  title: "Charbel Chávez Portfolio",
+  description: "CS student focused on research in quantum computing, machine learning, and data science.",
 };
 
 export default function RootLayout({ children }) {
