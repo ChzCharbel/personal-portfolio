@@ -1,14 +1,22 @@
 const experiences = [
   {
-    role: "Research Student – Quantum Neural Networks",
+    role: "Research Student - Quantum Neural Networks",
     subtitle: "Hybrid Classical-Quantum Architecture Research",
     org: "Monterrey's Institute of Technology",
-    date: "Mar 2026 – Present",
+    date: "Mar 2026 - Present",
     bullets: [
       "Designing and implementing a hybrid classical-quantum architecture for a benchmark, integrating classical embeddings with variational quantum layers.",
       "Building reproducible experimentation pipelines for NLP tasks (IMDB, AG News) and computer vision tasks (MNIST, Fashion-MNIST).",
       "Automating experiment execution and managing version control for the team's shared repository.",
       "Collaborating on a multifactorial experimental protocol evaluating qubit count, encoding strategy, and circuit depth.",
+    ],
+  },
+  {
+    role: "Software Engineer Intern",
+    subtitle: "Automatic Quotation System Development",
+    org: "Kalmy",
+    date: "Mar 2026 - Present",
+    bullets: [
     ],
   },
 ];
