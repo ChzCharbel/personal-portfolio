@@ -1,4 +1,5 @@
 import { Lora, Playfair_Display } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const lora = Lora({
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${lora.variable} ${playfair.variable}`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
