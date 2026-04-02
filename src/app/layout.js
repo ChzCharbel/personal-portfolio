@@ -1,5 +1,6 @@
 import { Lora, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const lora = Lora({
   variable: "--font-lora",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${lora.variable} ${playfair.variable}`}>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
