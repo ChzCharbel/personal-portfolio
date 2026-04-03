@@ -1,4 +1,6 @@
 import { Lora, Playfair_Display } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css";
 
 const lora = Lora({
