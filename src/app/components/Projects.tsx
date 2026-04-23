@@ -1,6 +1,31 @@
-const projects = [
+import Link from "next/link";
+
+interface Project {
+  title: string;
+  slug?: string;
+  subtitle: string;
+  description: string;
+  tags: string[];
+  github: string;
+  live: string | null;
+  date: string;
+}
+
+const projects: Project[] = [
+  {
+    title: "HopIt",
+    slug: "hopit",
+    subtitle: "AI Systems & LLMs",
+    description:
+      "Built an end-to-end pipeline for HackPrinceton 2026 transforming user drawings into structured JSON representations, enabling real-time game reconstruction. Integrated Gemini API for multimodal reasoning to interpret drawings and generate feedback on playability, difficulty, and level design quality. Framed level design as an AI-driven iterative refinement problem, earning Best Rookie Track and 1st Runner-Up for Best Use of AI + Hardware.",
+    tags: ["AI", "LLM", "Gemini API", "Multimodal", "JavaScript", "Next.js", "Node.js"],
+    github: "https://github.com/ChzCharbel/platformer-level-builder-2",
+    live: "https://devpost.com/software/hop-it",
+    date: "HackPrinceton 2026",
+  },
   {
     title: "VQC Implementation",
+    slug: "vqc-implementation",
     subtitle: "Quantum Machine Learning",
     description:
       "Designed a 2-qubit parameterized quantum circuit with RY-RZ-CNOT ansatz trained via the parameter-shift rule. Benchmarked against SVM-RBF baseline, achieving 91.2% test accuracy with near-identical AUC (0.9868 vs 0.9871). Analyzed loss landscape, quantum kernel geometry, and barren plateau theory to explain the performance gap.",
@@ -11,6 +36,7 @@ const projects = [
   },
   {
     title: "VitalSoft - Healthcare Management System",
+    slug: "vitalsoft",
     subtitle: "Full-Stack & Android Developer",
     description:
       "Full-stack healthcare platform to manage patient appointments and electronic medical records for a nephrology organization. Built RESTful backend services with Node.js and Express, a React web app for doctors, and an Android application in Kotlin enabling patients to book appointments and access lab results.",
@@ -21,6 +47,7 @@ const projects = [
   },
   {
     title: "Diana - Exoplanet Detection Web App",
+    slug: "diana-exoplanet",
     subtitle: "Machine Learning Engineer",
     description:
       "Trained and evaluated LightGBM models on 15,000+ Kepler and TESS samples for exoplanet detection. Built a FastAPI backend and React frontend for real-time inference and visualization. Achieved 2nd place at NASA Space Apps Challenge 2025 (local event).",
@@ -31,6 +58,7 @@ const projects = [
   },
   {
     title: "Multi-Agent Fire Rescue Simulation",
+    slug: "multi-agent-fire-rescue",
     subtitle: "Agent-Based Modeling",
     description:
       "Developed a multi-agent system using Python and Mesa, achieving a 27% win rate across 100+ simulations. Implemented autonomous agents with dynamic role assignment and Dijkstra-based pathfinding. Built real-time visualization using Flask and WebSockets.",
@@ -41,7 +69,7 @@ const projects = [
   },
 ];
 
-function Tag({ label }) {
+function Tag({ label }: { label: string }) {
   return (
     <span
       style={{
@@ -58,26 +86,11 @@ function Tag({ label }) {
   );
 }
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project }: { project: Project }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: "2rem",
-        paddingBottom: "2.5rem",
-        position: "relative",
-      }}
-    >
+    <div style={{ display: "flex", gap: "2rem", paddingBottom: "2.5rem", position: "relative" }}>
       {/* Timeline dot and line */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          position: "relative",
-        }}
-      >
-        {/* Dot */}
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", position: "relative" }}>
         <div
           style={{
             width: "12px",
@@ -89,7 +102,6 @@ function ProjectCard({ project, index }) {
             zIndex: 2,
           }}
         />
-        {/* Connecting line */}
         <div
           style={{
             width: "2px",
@@ -113,16 +125,18 @@ function ProjectCard({ project, index }) {
               lineHeight: 1.2,
             }}
           >
-            {project.title}
+            {project.slug ? (
+              <Link
+                href={`/projects/${project.slug}`}
+                style={{ color: "inherit", textDecoration: "none", fontSize: "inherit", fontFamily: "inherit" }}
+              >
+                {project.title} →
+              </Link>
+            ) : (
+              project.title
+            )}
           </h3>
-          <span
-            style={{
-              fontSize: "0.85rem",
-              color: "#9b9b8f",
-              fontStyle: "italic",
-              whiteSpace: "nowrap",
-            }}
-          >
+          <span style={{ fontSize: "0.85rem", color: "#9b9b8f", fontStyle: "italic", whiteSpace: "nowrap" }}>
             {project.date}
           </span>
         </div>
@@ -132,39 +146,20 @@ function ProjectCard({ project, index }) {
           </p>
         )}
 
-        <p
-          style={{
-            color: "#6b6b60",
-            fontSize: "0.9rem",
-            lineHeight: 1.7,
-            marginBottom: "1rem",
-          }}
-        >
+        <p style={{ color: "#6b6b60", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "1rem" }}>
           {project.description}
         </p>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.75rem" }}>
-          {project.tags.map((tag) => (
-            <Tag key={tag} label={tag} />
-          ))}
+          {project.tags.map((tag) => <Tag key={tag} label={tag} />)}
         </div>
 
         <div style={{ display: "flex", gap: "1.5rem" }}>
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-link"
-          >
+          <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-link">
             GitHub →
           </a>
           {project.live && (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-link"
-            >
+            <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-link">
               Demo →
             </a>
           )}
@@ -176,13 +171,7 @@ function ProjectCard({ project, index }) {
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      style={{
-        padding: "6rem 2rem",
-        borderTop: "1px solid #d4cfc6",
-      }}
-    >
+    <section id="projects" style={{ padding: "6rem 2rem", borderTop: "1px solid #d4cfc6" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
         <p
           style={{
@@ -209,12 +198,8 @@ export default function Projects() {
         </h2>
 
         <div style={{ position: "relative" }}>
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={project.title}
-              project={project}
-              index={index}
-            />
+          {projects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
           ))}
         </div>
       </div>

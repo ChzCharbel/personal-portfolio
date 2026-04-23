@@ -1,7 +1,14 @@
+import type { IconType } from "react-icons";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
-const socials = [
+interface Social {
+  label: string;
+  icon: IconType;
+  href: string;
+}
+
+const socials: Social[] = [
   { label: "GitHub", icon: FaGithub, href: "https://github.com/chzcharbel" },
   { label: "LinkedIn", icon: FaLinkedin, href: "https://linkedin.com/in/charbelchz" },
   { label: "Twitter / X", icon: FaXTwitter, href: "https://twitter.com/charbel_chz" },
@@ -27,7 +34,7 @@ export default function Contact() {
             marginBottom: "1rem",
           }}
         >
-          Let's Talk
+          Let&apos;s Talk
         </p>
         <h2
           style={{
@@ -41,13 +48,7 @@ export default function Contact() {
         >
           Contact
         </h2>
-        <p
-          style={{
-            color: "#6b6b60",
-            lineHeight: 1.8,
-            marginBottom: "2.5rem",
-          }}
-        >
+        <p style={{ color: "#6b6b60", lineHeight: 1.8, marginBottom: "2.5rem" }}>
           If you have a project in mind, a job offer, or simply want to say
           hello, feel free to reach out.
         </p>

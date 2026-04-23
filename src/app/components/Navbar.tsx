@@ -2,10 +2,17 @@
 
 import { useState, useEffect } from "react";
 
-const links = [
+interface NavLink {
+  label: string;
+  href: string;
+  download?: boolean;
+}
+
+const links: NavLink[] = [
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
+  { label: "Download CV", href: "/CharbelCV.pdf", download: true },
 ];
 
 export default function Navbar() {
@@ -57,8 +64,8 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden sm:flex" style={{ gap: "2.5rem" }}>
-          {links.map(({ label, href }) => (
-            <a key={href} href={href} className="nav-link">
+          {links.map(({ label, href, download }) => (
+            <a key={href} href={href} className="nav-link" download={download}>
               {label}
             </a>
           ))}
@@ -99,12 +106,7 @@ export default function Navbar() {
           }}
         >
           {links.map(({ label, href }) => (
-            <a
-              key={href}
-              href={href}
-              className="nav-link"
-              onClick={() => setMenuOpen(false)}
-            >
+            <a key={href} href={href} className="nav-link" onClick={() => setMenuOpen(false)}>
               {label}
             </a>
           ))}

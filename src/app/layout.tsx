@@ -1,6 +1,7 @@
+import type { Metadata } from "next";
 import { Lora, Playfair_Display } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const lora = Lora({
@@ -18,19 +19,24 @@ const playfair = Playfair_Display({
   weight: ["400", "600", "700"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Charbel Chávez Portfolio",
-  description: "CS student focused on research in quantum computing, machine learning, and data science.",
-  icons: {
-    icon: "/C.svg",
-  },
+  description:
+    "CS student focused on research in quantum computing, machine learning, and data science.",
+  icons: { icon: "/C.svg" },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className={`${lora.variable} ${playfair.variable}`}>
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

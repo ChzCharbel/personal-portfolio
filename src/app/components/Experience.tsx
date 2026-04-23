@@ -1,6 +1,18 @@
-const experiences = [
+import Link from "next/link";
+
+interface ExperienceItem {
+  role: string;
+  slug?: string;
+  subtitle: string;
+  org: string;
+  date: string;
+  bullets: string[];
+}
+
+const experiences: ExperienceItem[] = [
   {
     role: "Research Student - Quantum Neural Networks",
+    slug: "research-student",
     subtitle: "Hybrid Classical-Quantum Architecture Research",
     org: "Monterrey's Institute of Technology",
     date: "Mar 2026 - Present",
@@ -11,35 +23,13 @@ const experiences = [
       "Collaborating on a multifactorial experimental protocol evaluating qubit count, encoding strategy, and circuit depth.",
     ],
   },
-  {
-    role: "Software Engineer Intern",
-    subtitle: "Automatic Quotation System Development",
-    org: "Kalmy",
-    date: "Mar 2026 - Present",
-    bullets: [
-    ],
-  },
 ];
 
-function ExperienceCard({ exp }) {
+function ExperienceCard({ exp }: { exp: ExperienceItem }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: "2rem",
-        paddingBottom: "2.5rem",
-        position: "relative",
-      }}
-    >
+    <div style={{ display: "flex", gap: "2rem", paddingBottom: "2.5rem", position: "relative" }}>
       {/* Timeline dot and line */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          position: "relative",
-        }}
-      >
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", position: "relative" }}>
         <div
           style={{
             width: "12px",
@@ -74,16 +64,18 @@ function ExperienceCard({ exp }) {
               lineHeight: 1.2,
             }}
           >
-            {exp.role}
+            {exp.slug ? (
+              <Link
+                href={`/experience/${exp.slug}`}
+                style={{ color: "inherit", textDecoration: "none", fontSize: "inherit", fontFamily: "inherit" }}
+              >
+                {exp.role} →
+              </Link>
+            ) : (
+              exp.role
+            )}
           </h3>
-          <span
-            style={{
-              fontSize: "0.85rem",
-              color: "#9b9b8f",
-              fontStyle: "italic",
-              whiteSpace: "nowrap",
-            }}
-          >
+          <span style={{ fontSize: "0.85rem", color: "#9b9b8f", fontStyle: "italic", whiteSpace: "nowrap" }}>
             {exp.date}
           </span>
         </div>
@@ -95,15 +87,7 @@ function ExperienceCard({ exp }) {
 
         <ul style={{ paddingLeft: "1.1rem", margin: 0 }}>
           {exp.bullets.map((b, i) => (
-            <li
-              key={i}
-              style={{
-                color: "#6b6b60",
-                fontSize: "0.9rem",
-                lineHeight: 1.7,
-                marginBottom: "0.4rem",
-              }}
-            >
+            <li key={i} style={{ color: "#6b6b60", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "0.4rem" }}>
               {b}
             </li>
           ))}
@@ -115,13 +99,7 @@ function ExperienceCard({ exp }) {
 
 export default function Experience() {
   return (
-    <section
-      id="experience"
-      style={{
-        padding: "6rem 2rem",
-        borderTop: "1px solid #d4cfc6",
-      }}
-    >
+    <section id="experience" style={{ padding: "6rem 2rem", borderTop: "1px solid #d4cfc6" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
         <p
           style={{

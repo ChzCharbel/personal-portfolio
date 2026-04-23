@@ -1,4 +1,9 @@
-const facts = [
+interface Fact {
+  label: string;
+  value: string;
+}
+
+const facts: Fact[] = [
   { label: "Location", value: "Querétaro, México" },
   { label: "Availability", value: "Open to opportunities" },
   { label: "Focus", value: "ML · AI · Data Science" },
@@ -52,24 +57,18 @@ export default function About() {
             <br />
             <em style={{ fontWeight: 400 }}>building solutions.</em>
           </h2>
-          <p
-            style={{
-              color: "#6b6b60",
-              lineHeight: 1.85,
-              marginBottom: "1.25rem",
-            }}
-          >
-            I'm a CS student with strong interests in artificial intelligence,
+          <p style={{ color: "#6b6b60", lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            I&apos;m a CS student with strong interests in artificial intelligence,
             data science, quantitative finance, applied mathematics, and physics.
             I enjoy understanding complex systems and using computation to model,
             analyze, and solve real-world problems.
           </p>
           <p style={{ color: "#6b6b60", lineHeight: 1.85 }}>
-            I'm actively interested in academic research at the frontier of AI —
+            I&apos;m actively interested in academic research at the frontier of AI —
             classical machine learning, quantum machine learning, and the
-            mathematical structures that underpin intelligent systems. I'm drawn
+            mathematical structures that underpin intelligent systems. I&apos;m drawn
             to open questions where computation, physics, and data science
-            converge, and I'm looking to contribute to research in these areas.
+            converge, and I&apos;m looking to contribute to research in these areas.
           </p>
         </div>
 
@@ -98,13 +97,7 @@ export default function About() {
               >
                 {label}
               </span>
-              <span
-                style={{
-                  fontSize: "0.95rem",
-                  color: "#28281f",
-                  textAlign: "right",
-                }}
-              >
+              <span style={{ fontSize: "0.95rem", color: "#28281f", textAlign: "right" }}>
                 {value}
               </span>
             </div>

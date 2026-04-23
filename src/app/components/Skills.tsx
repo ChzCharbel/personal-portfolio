@@ -1,24 +1,14 @@
-const categories = [
-  {
-    name: "Languages",
-    items: ["Python", "C++", "JavaScript", "TypeScript", "HTML & CSS"],
-  },
-  {
-    name: "Frontend",
-    items: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
-  },
-  {
-    name: "Backend",
-    items: ["Node.js", "Express", "FastAPI", "PostgreSQL"],
-  },
-  {
-    name: "Computing",
-    items: ["CUDA", "Multithreading", "Parallel Computing", "Algorithms"],
-  },
-  {
-    name: "Tools",
-    items: ["Git", "Docker", "Linux", "Vercel"],
-  },
+interface Category {
+  name: string;
+  items: string[];
+}
+
+const categories: Category[] = [
+  { name: "Languages", items: ["Python", "C++", "JavaScript", "TypeScript", "HTML & CSS"] },
+  { name: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "TypeScript"] },
+  { name: "Backend", items: ["Node.js", "Express", "FastAPI", "PostgreSQL"] },
+  { name: "Computing", items: ["CUDA", "Multithreading", "Parallel Computing", "Algorithms"] },
+  { name: "Tools", items: ["Git", "Docker", "Linux", "Vercel"] },
 ];
 
 export default function Skills() {
@@ -90,12 +80,7 @@ export default function Skills() {
                 {items.map((item) => (
                   <li
                     key={item}
-                    style={{
-                      fontSize: "0.95rem",
-                      color: "#28281f",
-                      paddingLeft: "1rem",
-                      position: "relative",
-                    }}
+                    style={{ fontSize: "0.95rem", color: "#28281f", paddingLeft: "1rem", position: "relative" }}
                   >
                     <span
                       style={{
